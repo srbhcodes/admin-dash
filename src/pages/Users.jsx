@@ -11,7 +11,7 @@ import { useSearch } from "../hooks/useSearch";
 
 const UsersTable = React.memo(({ filteredItems }) => (
   <div className="overflow-x-auto">
-    <table className="min-w-full bg-white dark:bg-gray-900 shadow rounded">
+    <table className="min-w-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700">
       <thead>
         <tr className="bg-gray-200 dark:bg-gray-700 text-left">
           <th className="p-3">Avatar</th>
@@ -57,10 +57,10 @@ const Users = () => {
     );
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">Users (Page {page})</h1>
+    <div className="space-y-6">
+      <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">Users (Page {page})</h1>
 
-      <div className="mb-4">
+      <div>
         <SearchBar onSearch={handleSearch} />
         {hasActiveSearch && (
           <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
