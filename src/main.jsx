@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <ThemeProvider>
       <BrowserRouter>
         <QueryClientProvider client={queryClient}>
-          <App />
+            <App />
         </QueryClientProvider>
       </BrowserRouter>
     </ThemeProvider>

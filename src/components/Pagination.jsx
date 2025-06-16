@@ -1,13 +1,13 @@
-import React from "react";
+import { memo } from "react";
+
+const getButtonClass = (disabled) =>
+  `px-4 py-2 rounded ${
+    disabled
+      ? "bg-gray-300 dark:bg-gray-600 cursor-not-allowed text-gray-500 dark:text-gray-400"
+      : "bg-blue-500 text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
+  }`;
 
 const Pagination = ({ page, totalPages, onPrevious, onNext }) => {
-  const getButtonClass = (disabled) =>
-    `px-4 py-2 rounded ${
-      disabled
-        ? "bg-gray-300 dark:bg-gray-600 cursor-not-allowed text-gray-500 dark:text-gray-400"
-        : "bg-blue-500 text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
-    }`;
-
   return (
     <div className="flex justify-center items-center space-x-4 mt-6">
       <button
@@ -33,4 +33,4 @@ const Pagination = ({ page, totalPages, onPrevious, onNext }) => {
   );
 };
 
-export default React.memo(Pagination);
+export default memo(Pagination);

@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 
 const SummaryCard = ({ title, value }) => {
   return (
@@ -9,4 +9,4 @@ const SummaryCard = ({ title, value }) => {
   );
 };
 
-export default React.memo(SummaryCard);
+export default memo(SummaryCard);

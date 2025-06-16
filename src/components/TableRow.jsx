@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 
 const TableRow = ({ user }) => {
   return (
@@ -22,4 +22,4 @@ const TableRow = ({ user }) => {
   );
 };
 
-export default React.memo(TableRow);
+export default memo(TableRow);

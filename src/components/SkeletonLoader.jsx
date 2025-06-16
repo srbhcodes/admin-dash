@@ -1,5 +1,3 @@
-import React from "react";
-
 const SkeletonLoader = () => {
   return (
     <div className="animate-pulse space-y-4 p-4">

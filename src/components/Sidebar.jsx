@@ -1,15 +1,14 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 import { FaHome, FaUsers, FaChartBar } from "react-icons/fa";
 
-const Sidebar = ({ isOpen, toggleSidebar }) => {
-  const linkClass = ({ isActive }) =>
-    `flex items-center space-x-3 px-4 py-2 mx-2 text-sm font-medium ${
-      isActive 
-        ? "bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 border-r-3 border-blue-600 dark:border-blue-400" 
-        : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-    }`;
+const linkClass = ({ isActive }) =>
+  `flex items-center space-x-3 px-4 py-2 mx-2 text-sm font-medium ${
+    isActive 
+      ? "bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 border-r-3 border-blue-600 dark:border-blue-400" 
+      : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+  }`;
 
+const Sidebar = ({ isOpen, toggleSidebar }) => {
   return (
     <>
       {isOpen && (

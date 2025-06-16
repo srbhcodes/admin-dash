@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import SummaryCard from "../components/SummaryCard";
 import SkeletonLoader from "../components/SkeletonLoader";
 import { useQuery } from "@tanstack/react-query";
@@ -11,16 +11,12 @@ const Dashboard = () => {
   });
 
   if (isLoading) return <p className="text-center py-8 text-gray-900 dark:text-gray-100">Loading...</p>;
-  if (isError)
-    return (
-      <p className="text-center py-8 text-red-500">Error: {error.message}</p>
-    );
+  if (isError) return <p className="text-center py-8 text-red-500">Error: {error.message}</p>;
 
   const totalUsers = data?.total || 0;
   const totalPages = data?.total_pages || 0;
   const usersPerPage = data?.per_page || 0;
   const activeUsers = Math.floor(totalUsers * 0.75);
-
   const recentUsers = data?.data?.slice(0, 3) || [];
 
   return (

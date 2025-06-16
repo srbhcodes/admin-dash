@@ -1,15 +1,14 @@
-import React, { Suspense } from "react";
+import { Suspense, useState, useEffect, memo } from "react";
 import Pagination from "../components/Pagination";
 import Spinner from "../components/Spinner";
 import SkeletonLoader from "../components/SkeletonLoader";
 import TableRow from "../components/TableRow";
 import SearchBar from "../components/SearchBar";
-
 import { useApiFetch } from "../hooks/useApiFetch";
 import { usePagination } from "../hooks/usePagination";
 import { useSearch } from "../hooks/useSearch";
 
-const UsersTable = React.memo(({ filteredItems }) => (
+const UsersTable = memo(({ filteredItems }) => (
   <div className="overflow-x-auto">
     <table className="min-w-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700">
       <thead>
@@ -29,32 +28,29 @@ const UsersTable = React.memo(({ filteredItems }) => (
 ));
 
 const Users = () => {
-  const [page, setPage] = React.useState(1);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   
   const { data, isLoading, isError, error } = useApiFetch(page);
   
-  const [totalPages, setTotalPages] = React.useState(1);
-  
-  React.useEffect(() => {
+  useEffect(() => {
     if (data?.total_pages) {
       setTotalPages(data.total_pages);
     }
   }, [data?.total_pages]);
   
   const { onPrevious, onNext } = usePagination(page, setPage, totalPages);
-
   const { filteredItems, handleSearch, hasActiveSearch } = useSearch(
     data?.data || [], 
     "first_name"
   );
 
   if (isLoading) return <Spinner />;
-  if (isError)
-    return (
-      <div className="text-red-500 text-center py-4">
-        Failed to fetch users: {error.message}
-      </div>
-    );
+  if (isError) return (
+    <div className="text-red-500 text-center py-4">
+      Failed to fetch users: {error.message}
+    </div>
+  );
 
   return (
     <div className="space-y-6">

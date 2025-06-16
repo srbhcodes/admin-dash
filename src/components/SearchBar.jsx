@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { memo, useState, useEffect } from "react";
 import useDebounce from "../hooks/useDebounce";
 
 const SearchBar = ({ onSearch, placeholder = "Search users by name..." }) => {
   const [input, setInput] = useState("");
   const debouncedInput = useDebounce(input, 300);
-
+ 
   useEffect(() => {
     onSearch(debouncedInput.trim());
   }, [debouncedInput, onSearch]);
@@ -20,4 +20,4 @@ const SearchBar = ({ onSearch, placeholder = "Search users by name..." }) => {
   );
 };
 
-export default React.memo(SearchBar);
+export default memo(SearchBar);

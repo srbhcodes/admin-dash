@@ -1,17 +1,17 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaSun, FaMoon, FaBars, FaBell, FaChevronDown } from "react-icons/fa";
+
+const mockNotifications = [
+  { id: 1, text: "System status: All services operational", time: "2 min ago", type: "success" },
+  { id: 2, text: "New user registration: Emma Watson", time: "8 min ago", type: "info" },
+  { id: 3, text: "Weekly report is ready for review", time: "1 hour ago", type: "info" }
+];
 
 const Navbar = ({ toggleSidebar, theme, toggleTheme }) => {
   const [showNotifications, setShowNotifications] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const notificationRef = useRef(null);
   const profileRef = useRef(null);
-
-  const mockNotifications = [
-    { id: 1, text: "System status: All services operational", time: "2 min ago", type: "success" },
-    { id: 2, text: "New user registration: Emma Watson", time: "8 min ago", type: "info" },
-    { id: 3, text: "Weekly report is ready for review", time: "1 hour ago", type: "info" }
-  ];
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -30,13 +30,13 @@ const Navbar = ({ toggleSidebar, theme, toggleTheme }) => {
   return (
     <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center px-6 py-3 sticky top-0 z-30">
       <div className="flex items-center space-x-4">
-        <button
+      <button
           className="lg:hidden p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-          onClick={toggleSidebar}
-          aria-label="Toggle Sidebar"
-        >
+        onClick={toggleSidebar}
+        aria-label="Toggle Sidebar"
+      >
           <FaBars size={16} />
-        </button>
+      </button>
 
         <div className="flex items-center space-x-3">
           <div className="w-8 h-8 bg-blue-600 dark:bg-blue-500 flex items-center justify-center">
@@ -50,14 +50,14 @@ const Navbar = ({ toggleSidebar, theme, toggleTheme }) => {
 
       <div className="flex items-center space-x-2">
         <div className="relative" ref={notificationRef}>
-          <button
+        <button
             onClick={() => setShowNotifications(!showNotifications)}
             className="relative p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-            aria-label="Notifications"
-          >
+          aria-label="Notifications"
+        >
             <FaBell size={16} />
             <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-          </button>
+        </button>
 
           {showNotifications && (
             <div className="absolute right-0 mt-1 w-80 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-lg z-50">

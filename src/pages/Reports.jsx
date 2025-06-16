@@ -1,4 +1,3 @@
-import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchUsers } from "../utils/api";
 import Spinner from "../components/Spinner";
@@ -10,19 +9,16 @@ const Reports = () => {
   });
 
   if (isLoading) return <Spinner />;
-
-  if (isError)
-    return (
-      <div className="text-red-500 text-center py-4">
-        Failed to load report data: {error.message}
-      </div>
-    );
+  if (isError) return (
+    <div className="text-red-500 text-center py-4">
+      Failed to load report data: {error.message}
+    </div>
+  );
 
   const totalUsers = data?.total || 0;
   const currentPageUsers = data?.data?.length || 0;
   const totalPages = data?.total_pages || 0;
   const usersPerPage = data?.per_page || 0;
-  
   const activeUsers = Math.floor(totalUsers * 0.75);
   const engagementRate = 85;
 
@@ -147,7 +143,7 @@ const Reports = () => {
             </tbody>
           </table>
         </div>
-        
+
         <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 flex justify-between items-center text-sm">
           <span className="text-gray-600 dark:text-gray-400">
             Last API call: {new Date().toLocaleString()}

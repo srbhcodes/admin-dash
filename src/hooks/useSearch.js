@@ -8,6 +8,8 @@ export const useSearch = (items = [], searchKey = "") => {
   }, []);
 
   const filteredItems = useMemo(() => {
+    if (!items?.length) return [];
+    
     return items.filter((item) => {
       if (!searchQuery) return true;
       if (!searchKey) return true;
